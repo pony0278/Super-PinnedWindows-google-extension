@@ -9,9 +9,14 @@
 
 ## 🌟 Features at a Glance
 
-**(Highly Recommended:** Insert a 10-15 second GIF here demonstrating the extension icon click, the right-click menu, and both window types working simultaneously. This will significantly boost your project's appeal!**)**
+<table align="center">
+  <tr>
+    <td><img src="images/demo.gif" width="400"></td>
+    <td width="40"></td>
+    <td><img src="images/demo2.gif" width="400"></td>
+  </tr>
+</table>
 
-`![Super Pinned Windows Demo](demo.gif)`
 
 ---
 
