@@ -8,7 +8,7 @@
 
 ---
 
-## 🌟 Features at a Glance
+## 🌟 Demo
 
 <table align="center">
   <tr>
