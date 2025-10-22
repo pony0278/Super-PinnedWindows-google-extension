@@ -1,6 +1,7 @@
-# Super Pinned Windows (Chrome Extension)
+# Super Pinned Windows (Chrome Extension) ![Logo](icons/icon48.png)
 
 **Super Pinned Windows** is a powerful Chrome extension designed to fundamentally change your multitasking workflow. It allows you to float any webpage tab or link using two distinct and powerful modes:
+
 
 1.  **PiP Mode (Picture-in-Picture):** A single, **truly always-on-top**, interactive window that floats above all your other applications.
 2.  **Popup Mode (Popup Window):** A flexible, independent, and minimal browser window that you can **open multiple times**.
