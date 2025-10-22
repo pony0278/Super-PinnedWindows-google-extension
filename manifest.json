@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Super Pinned Windows",
+  "version": "4.0",
+  "description": "Open any tab or link in an always-on-top PiP or a flexible popup window.",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "tabs",
+    "contextMenus",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Open in a pinned window",
+    "default_popup": "popup.html"
+  },
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "ruleset_1",
+      "enabled": true,
+      "path": "rules.json"
+    }]
+  }
+}
