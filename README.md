@@ -96,7 +96,6 @@ We strongly recommend installing **[Microsoft PowerToys](https://learn.microsoft
 ## 🛠️ Installation
 
 ### Option A: From the Chrome Web Store (Future)
-*(You can add your link here once it's published)*
 `[Coming Soon]`
 
 ### Option B: Manual Installation (Developer Mode)
