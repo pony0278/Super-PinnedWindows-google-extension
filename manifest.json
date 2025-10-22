@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Super Pinned Windows",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Open any tab or link in an always-on-top PiP or a flexible popup window.",
   "icons": {
     "16": "icons/icon16.png",
@@ -9,8 +9,6 @@
     "128": "icons/icon128.png"
   },
   "permissions": [
-    "scripting",
-    "activeTab",
     "tabs",
     "contextMenus",
     "declarativeNetRequest"
@@ -29,5 +27,12 @@
       "enabled": true,
       "path": "rules.json"
     }]
-  }
+  },
+"content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
 }

@@ -1,5 +1,13 @@
+let isOpening = false;
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "open_companion_window") {
+    if (documentPictureInPicture.window) {
+      documentPictureInPicture.window.focus();
+      sendResponse({ status: "focused" });
+      return true;
+    }
+
     openCompanion(request.url);
     sendResponse({ status: "success" });
   }
@@ -7,8 +15,17 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 async function openCompanion(url) {
+  if (isOpening) {
+    console.log("PiP window is already in the process of opening.");
+    return;
+  }
+  
+  // 鎖定！
+  isOpening = true;
+
   if (!("documentPictureInPicture" in window)) {
     alert("Your browser does not support Document Picture-in-Picture API.");
+    isOpening = false;
     return;
   }
 
@@ -29,7 +46,15 @@ async function openCompanion(url) {
     iframe.src = url;
     pipWindow.document.body.appendChild(iframe);
 
+    pipWindow.addEventListener('pagehide', () => {
+        isOpening = false; 
+    });
+
   } catch (error) {
     console.error("Failed to open companion window:", error);
+  } finally {
+    if (!documentPictureInPicture.window) {
+        isOpening = false;
+    }
   }
 }
