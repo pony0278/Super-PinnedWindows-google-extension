@@ -1,3 +1,5 @@
+let lastActiveUrl = '';
+
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "open-link-as-pip",
@@ -7,6 +9,12 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "open-link-as-popup",
     title: "Open Link as Popup (Multiple)",
+    contexts: ["link"]
+  });
+
+  chrome.contextMenus.create({
+    id: "open-link-as-sidepanel",
+    title: "Open Link in Side Panel",
     contexts: ["link"]
   });
 });
@@ -21,6 +29,9 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "open-link-as-popup" && info.linkUrl) {
     openAsPopup(info.linkUrl);
   }
+  if (info.menuItemId === "open-link-as-sidepanel" && info.linkUrl) {
+    openAsSidePanel(info.linkUrl, tab.id);
+  }
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -30,6 +41,20 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         openAsPopup(tabs[0].url);
       }
     });
+  }
+  if (request.action === 'open_sidepanel_current_tab') {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (tabs.length > 0) openAsSidePanel(tabs[0].url, tabs[0].id);
+    });
+  }
+  if (request.action === 'get_sidepanel_url') {
+    if (lastActiveUrl) {
+      // 立即發送訊息給 side panel 更新 URL
+      chrome.runtime.sendMessage({ 
+        action: "load_url_in_sidepanel", 
+        url: lastActiveUrl 
+      });
+    }
   }
   return true; 
 });
@@ -52,5 +77,27 @@ function openAsPopup(url) {
       createData.alwaysOnTop = true;
     }
     chrome.windows.create(createData);
+  });
+}
+
+async function openAsSidePanel(url, tabId) {
+  if (!url || (!url.startsWith('http://') && !url.startsWith('https://'))) {
+    console.log("Invalid URL for side panel.");
+    return;
+  }
+  
+  lastActiveUrl = url; // Store the URL for sidepanel.js to fetch
+
+  chrome.sidePanel.setOptions({
+    tabId: tabId,
+    path: 'sidepanel.html',
+    enabled: true
+  });
+
+  await chrome.sidePanel.open({ tabId: tabId });
+
+  chrome.runtime.sendMessage({ 
+    action: "load_url_in_sidepanel", 
+    url: url 
   });
 }

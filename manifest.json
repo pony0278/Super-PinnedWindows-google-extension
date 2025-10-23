@@ -11,7 +11,9 @@
   "permissions": [
     "tabs",
     "contextMenus",
-    "declarativeNetRequest"
+    "declarativeNetRequest",
+    "sidePanel",  
+    "storage"
   ],
   "host_permissions": ["<all_urls>"],
   "background": {
@@ -34,5 +36,8 @@
       "js": ["content.js"],
       "run_at": "document_idle"
     }
-  ]
+  ],
+"side_panel": {
+    "default_path": "sidepanel.html"
+  }
 }
