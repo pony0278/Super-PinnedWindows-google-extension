@@ -20,7 +20,6 @@ async function openCompanion(url) {
     return;
   }
   
-  // 鎖定！
   isOpening = true;
 
   if (!("documentPictureInPicture" in window)) {
