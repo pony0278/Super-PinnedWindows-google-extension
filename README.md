@@ -1,11 +1,6 @@
 # Super Pinned Windows (Chrome Extension) ![Logo](icons/icon48.png)
 
-<p>
-  <small><small><em>
-Open floating mini-windows anywhere with this Chrome extension powered by Picture-in-Picture (PiP) — sneak a peek at videos or stocks while you work!
-  </em></small></small>
-</p>
-
+###### *Open floating mini-windows anywhere with this Chrome extension powered by Picture-in-Picture (PiP) — sneak a peek at videos or stocks while you work!*
 
 
 **Super Pinned Windows** is a powerful Chrome extension designed to fundamentally change your multitasking workflow. It allows you to float any webpage tab or link using two distinct and powerful modes:
