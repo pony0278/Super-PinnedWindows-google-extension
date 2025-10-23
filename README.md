@@ -8,6 +8,7 @@
 
 1. **PiP Mode (Picture-in-Picture):** A single, **truly always-on-top**, interactive window that floats above all your other applications.
 2. **Popup Mode (Popup Window):** A flexible, independent, and minimal browser window that you can **open multiple times**.
+3. **Side panel (Docked):** A fully interactive panel **locked to the side** of your main browser window, perfect for persistent companion apps, notes, or media controls.
 
 ---
 
@@ -26,11 +27,11 @@
 
 ## ✨ Core Functionality
 
-* **Dual Float Modes:** Freely choose between a "PiP Always-on-Top" or a "Popup Window" based on your needs.
-* **Works on Any Site:** Thanks to advanced request modification, PiP Mode can load *any* website, including Google and YouTube, bypassing `X-Frame-Options` restrictions.
+* **Dual Float Modes:** Freely choose between an "Always-on-Top PiP," a "Flexible Popup," or a "Docked Side Panel" based on your needs.
+* **Works on Any Site:** Thanks to advanced request modification, both **PiP Mode and Side Panel Mode** can load *any* website, including Google and YouTube, by bypassing `X-Frame-Options` restrictions.
 * **Fully Interactive:** Windows in both modes are fully functional browsers, allowing you to log in, scroll, click, and type.
-* **Right-Click Context Menu:** Right-click any link to choose which mode to open it in.
-* **Multi-Window Support:** You can have one PiP window open and **simultaneously** open as many Popup windows as you need.
+* **Right-Click Context Menu:** Right-click any link to open it directly in your choice of PiP, Popup, or Side Panel.
+* **Multi-Window Support:** You can have one PiP window, one Side Panel, and multiple Popup windows all open and working at the same time.
 * **Cross-Platform Topmost:** Popup Mode automatically enables "Always-on-Top" on macOS and Linux.
 
 ---
@@ -64,6 +65,18 @@ This is your **multitasking, flexible** option. It creates an independent, minim
 **Limitations:**
 * On the **Windows OS**, this mode **cannot** be made "Always-on-Top" by the extension alone.
 
+### 3. Side Panel Mode (Docked)
+
+This is your **persistent, integrated** option. It locks a webpage to the side of your current browser window, resizing the main content to fit.
+
+**Best For:**
+* Keeping a persistent tool visible (e.g., a notebook, calculator, or chat app).
+* Controlling media (like Spotify or YouTube Music) without leaving your tab.
+* "Companion" apps that work alongside your main page.
+
+**Limitations:**
+* Only one Side Panel can be open at a time.
+* It is "docked" to the browser window and cannot be floated freely over other applications.
 ---
 
 ## 🚀 How to Use
@@ -73,12 +86,7 @@ This is your **multitasking, flexible** option. It creates an independent, minim
 2.  From the dropdown, choose:
     * **PiP Window (Always-on-Top)**: Opens the current tab in PiP mode.
     * **Popup Window (Multiple)**: Opens the current tab in a new popup window.
-
-### 2. For Any Link on a Page
-1.  Right-click on any link on any webpage.
-2.  From the context menu, select:
-    * **Open Link as PiP (Always-on-Top)**
-    * **Open Link as Popup (Multiple)**
+    * **Side Panel (Docked)**: Opens the current tab in the browser's side panel.
 
 ---
 
