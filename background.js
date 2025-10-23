@@ -49,14 +49,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
   if (request.action === 'get_sidepanel_url') {
     if (lastActiveUrl) {
-      // 立即發送訊息給 side panel 更新 URL
       chrome.runtime.sendMessage({ 
         action: "load_url_in_sidepanel", 
         url: lastActiveUrl 
       });
     }
   }
-  return true; 
 });
 
 

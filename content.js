@@ -4,14 +4,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "open_companion_window") {
     if (documentPictureInPicture.window) {
       documentPictureInPicture.window.focus();
-      sendResponse({ status: "focused" });
-      return true;
+      return;
     }
 
     openCompanion(request.url);
-    sendResponse({ status: "success" });
   }
-  return true; 
 });
 
 async function openCompanion(url) {
