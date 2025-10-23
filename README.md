@@ -2,7 +2,7 @@
 
 <p>
   <small><small><em>
-    This is a Google Chrome extension that uses PiP (Picture-in-Picture) technology to let you open floating mini-windows — perfect for sneaking a look at videos, tracking stocks, or doing anything else while you work!
+Open floating mini-windows anywhere with this Chrome extension powered by Picture-in-Picture (PiP) — sneak a peek at videos or stocks while you work!
   </em></small></small>
 </p>
 
