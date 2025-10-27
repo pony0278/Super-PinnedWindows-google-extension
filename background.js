@@ -48,15 +48,17 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     });
   }
   if (request.action === 'get_sidepanel_url') {
-    if (lastActiveUrl) {
-      chrome.runtime.sendMessage({ 
-        action: "load_url_in_sidepanel", 
-        url: lastActiveUrl 
-      });
-    }
+    chrome.storage.session.get(['lastActiveUrl'], (result) => {
+      if (result.lastActiveUrl) {
+        chrome.runtime.sendMessage({ 
+          action: "load_url_in_sidepanel", 
+          url: result.lastActiveUrl 
+        });
+      }
+    });
+    return true;
   }
 });
-
 
 function openAsPopup(url) {
   if (!url || (!url.startsWith('http://') && !url.startsWith('https://'))) {
@@ -83,8 +85,8 @@ async function openAsSidePanel(url, tabId) {
     console.log("Invalid URL for side panel.");
     return;
   }
-  
-  lastActiveUrl = url; // Store the URL for sidepanel.js to fetch
+
+  chrome.storage.session.set({ lastActiveUrl: url });
 
   chrome.sidePanel.setOptions({
     tabId: tabId,
@@ -92,10 +94,15 @@ async function openAsSidePanel(url, tabId) {
     enabled: true
   });
 
-  await chrome.sidePanel.open({ tabId: tabId });
+  try {
+    await chrome.sidePanel.open({ tabId: tabId });
 
-  chrome.runtime.sendMessage({ 
-    action: "load_url_in_sidepanel", 
-    url: url 
-  });
+    chrome.runtime.sendMessage({
+      action: "load_url_in_sidepanel",
+      url: url
+    });
+  } catch (error) {
+
+    console.error("Failed to open side panel:", error);
+  }
 }
