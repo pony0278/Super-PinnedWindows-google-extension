@@ -61,11 +61,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 chrome.commands.onCommand.addListener((command) => {
-  if (
-    command !== 'open_current_tab_pip' &&
-    command !== 'open_current_tab_popup' &&
-    command !== 'open_current_tab_sidepanel'
-  ) {
+  const pipCommands = ['open_current_tab_pip', 'open_pip_current_tab'];
+  const popupCommands = ['open_current_tab_popup', 'open_popup_current_tab'];
+  const sidepanelCommands = ['open_current_tab_sidepanel', 'open_sidepanel_current_tab'];
+
+  const isKnownCommand =
+    pipCommands.includes(command) ||
+    popupCommands.includes(command) ||
+    sidepanelCommands.includes(command);
+
+  if (!isKnownCommand) {
     return;
   }
 
@@ -74,18 +79,18 @@ chrome.commands.onCommand.addListener((command) => {
 
     const activeTab = tabs[0];
 
-    if (command === 'open_current_tab_pip') {
+    if (pipCommands.includes(command)) {
       chrome.tabs.sendMessage(activeTab.id, {
         action: "open_companion_window",
         url: activeTab.url
       });
     }
 
-    if (command === 'open_current_tab_popup') {
+    if (popupCommands.includes(command)) {
       openAsPopup(activeTab.url);
     }
 
-    if (command === 'open_current_tab_sidepanel') {
+    if (sidepanelCommands.includes(command)) {
       openAsSidePanel(activeTab.url, activeTab.id);
     }
   });
