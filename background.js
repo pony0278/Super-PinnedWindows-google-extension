@@ -21,8 +21,8 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "open-link-as-pip" && info.linkUrl) {
-    chrome.tabs.sendMessage(tab.id, { 
-      action: "open_companion_window", 
+    chrome.tabs.sendMessage(tab.id, {
+      action: "open_companion_window",
       url: info.linkUrl 
     });
   }
@@ -31,6 +31,31 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
   if (info.menuItemId === "open-link-as-sidepanel" && info.linkUrl) {
     openAsSidePanel(info.linkUrl, tab.id);
+  }
+});
+
+chrome.commands.onCommand.addListener(async (command) => {
+  const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+  if (!activeTab || !activeTab.url) {
+    return;
+  }
+
+  if (command === 'open-pip-current-tab') {
+    chrome.tabs.sendMessage(activeTab.id, {
+      action: "open_companion_window",
+      url: activeTab.url
+    });
+    return;
+  }
+
+  if (command === 'open-popup-current-tab') {
+    openAsPopup(activeTab.url);
+    return;
+  }
+
+  if (command === 'open-sidepanel-current-tab') {
+    openAsSidePanel(activeTab.url, activeTab.id);
   }
 });
 
