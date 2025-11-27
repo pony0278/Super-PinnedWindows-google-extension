@@ -12,10 +12,12 @@
     "tabs",
     "contextMenus",
     "declarativeNetRequest",
-    "sidePanel",  
+    "sidePanel",
     "storage"
   ],
-  "host_permissions": ["<all_urls>"],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
     "service_worker": "background.js"
   },
@@ -26,7 +28,7 @@
   "commands": {
     "open_current_tab_pip": {
       "suggested_key": {
-        "default": "Alt+Shift+P"
+        "default": "Alt+Shift+W"
       },
       "description": "Open current tab in PiP (Always-on-Top)"
     },
@@ -44,20 +46,26 @@
     }
   },
   "declarative_net_request": {
-    "rule_resources": [{
-      "id": "ruleset_1",
-      "enabled": true,
-      "path": "rules.json"
-    }]
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
   },
-"content_scripts": [
+  "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_idle"
     }
   ],
-"side_panel": {
+  "side_panel": {
     "default_path": "sidepanel.html"
   }
 }
