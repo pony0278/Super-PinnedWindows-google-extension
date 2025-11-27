@@ -23,6 +23,26 @@
     "default_title": "Open in a pinned window",
     "default_popup": "popup.html"
   },
+  "commands": {
+    "open_current_tab_pip": {
+      "suggested_key": {
+        "default": "Alt+Shift+P"
+      },
+      "description": "Open current tab in PiP (Always-on-Top)"
+    },
+    "open_current_tab_popup": {
+      "suggested_key": {
+        "default": "Alt+Shift+O"
+      },
+      "description": "Open current tab in Popup (Multiple)"
+    },
+    "open_current_tab_sidepanel": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Open current tab in Side Panel (Docked)"
+    }
+  },
   "declarative_net_request": {
     "rule_resources": [{
       "id": "ruleset_1",
