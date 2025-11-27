@@ -99,9 +99,7 @@ All three actions can be triggered with keyboard shortcuts that you can change a
 * `Alt` + `Shift` + `O` → Open current tab in **Popup** (multiple)
 * `Alt` + `Shift` + `S` → Open current tab in **Side Panel** (docked)
 
-Alt+Shift+P is reserved by Chrome for its built-in Picture-in-Picture toggle, so the PiP shortcut here defaults to `Alt` + `Shift` + `W` to avoid conflicts.
-
-> Upgrading? Previous versions used command IDs named `open_pip_current_tab`, `open_popup_current_tab`, and `open_sidepanel_current_tab`. Existing custom shortcuts mapped to those IDs will continue working alongside the new defaults.
+> Need restart your chrome.
 
 To customize, open `chrome://extensions/shortcuts`, find **Super Pinned Windows**, and set your preferred keys for each action.
 
