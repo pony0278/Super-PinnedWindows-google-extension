@@ -91,6 +91,13 @@ This is your **persistent, integrated** option. It locks a webpage to the side o
     * **Popup Window (Multiple)**: Opens the current tab in a new popup window.
     * **Side Panel (Docked)**: Opens the current tab in the browser's side panel.
 
+### 2. Keyboard Shortcuts
+* **Alt+Shift+P**: Open the current tab in PiP mode.
+* **Alt+Shift+O**: Open the current tab as a popup window.
+* **Alt+Shift+S**: Open the current tab in the side panel.
+
+> You can change these shortcuts anytime at `chrome://extensions/shortcuts`.
+
 ---
 
 ## 🖥️ A Special Note for Windows Users

@@ -21,9 +21,9 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "open-link-as-pip" && info.linkUrl) {
-    chrome.tabs.sendMessage(tab.id, { 
-      action: "open_companion_window", 
-      url: info.linkUrl 
+    chrome.tabs.sendMessage(tab.id, {
+      action: "open_companion_window",
+      url: info.linkUrl
     });
   }
   if (info.menuItemId === "open-link-as-popup" && info.linkUrl) {
@@ -59,6 +59,47 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
 });
+
+chrome.commands.onCommand.addListener((command) => {
+  switch (command) {
+    case 'open-pip-current-tab':
+      openCurrentTabAsPip();
+      break;
+    case 'open-popup-current-tab':
+      openCurrentTabAsPopup();
+      break;
+    case 'open-sidepanel-current-tab':
+      openCurrentTabAsSidePanel();
+      break;
+  }
+});
+
+function openCurrentTabAsPip() {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (tabs.length > 0 && tabs[0].id && tabs[0].url) {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        action: "open_companion_window",
+        url: tabs[0].url
+      });
+    }
+  });
+}
+
+function openCurrentTabAsPopup() {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (tabs.length > 0) {
+      openAsPopup(tabs[0].url);
+    }
+  });
+}
+
+function openCurrentTabAsSidePanel() {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (tabs.length > 0) {
+      openAsSidePanel(tabs[0].url, tabs[0].id);
+    }
+  });
+}
 
 function openAsPopup(url) {
   if (!url || (!url.startsWith('http://') && !url.startsWith('https://'))) {
