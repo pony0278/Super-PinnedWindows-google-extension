@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Super Pinned Windows",
-  "version": "4.1.0",
+  "name": "Always on Top, PiP & Side Panel (3 in 1) - Super Pinned Window",
+  "version": "4.1.2",
   "description": "Open any tab or link in an always-on-top PiP or a flexible popup window.",
   "icons": {
     "16": "icons/icon16.png",
