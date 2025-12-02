@@ -28,7 +28,7 @@
   "commands": {
     "open_current_tab_pip": {
       "suggested_key": {
-        "default": "Alt+Shift+W"
+        "default": "Alt+Shift+U"
       },
       "description": "Open current tab in PiP (Always-on-Top)"
     },

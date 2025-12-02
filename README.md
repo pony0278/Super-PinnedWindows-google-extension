@@ -95,7 +95,7 @@ This is your **persistent, integrated** option. It locks a webpage to the side o
 All three actions can be triggered with keyboard shortcuts that you can change at any time via `chrome://extensions/shortcuts`.
 
 **Default shortcuts (you can reassign these):**
-* `Alt` + `Shift` + `W` → Open current tab in **PiP** (always-on-top)
+* `Alt` + `Shift` + `U` → Open current tab in **PiP** (always-on-top)
 * `Alt` + `Shift` + `O` → Open current tab in **Popup** (multiple)
 * `Alt` + `Shift` + `S` → Open current tab in **Side Panel** (docked)
 
